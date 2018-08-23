@@ -23,16 +23,21 @@ fs.readFile('./readme.md', (error,datos) => {
 });
 
 const readme = process.argv[1];
-console.log(readme);
+//console.log(readme);
+
+var filename = path.dirname(process.argv[1]);
+console.log(filename);
+
 //const [, , ...args] = process.argv;
 
-fs.readdir(readme, (err, files)=> {
+fs.readdir(filename, (err, files)=> {
   if (err) {
     console.log('Error reading files: ', err);
+
   }
-  console.log(readme);
-  /*
-  files.forEach ((i)=> {
+  
+  
+ /* files.forEach ((i)=> {
     // read its contents.
     if (path.extname(files[i] === '.md')) {
       console.log(files[i]);
@@ -44,8 +49,21 @@ fs.readdir(readme, (err, files)=> {
       });
     }
   }); */
-}); 
 
+  for (let i = 0; i < files.length; i++) {
+    if (path.extname(files[i]) === '.md') {
+      console.log(files[i]);
+      fs.readFile(files[i], 'utf8', function(err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          //console.log(data);
+        }
+      });
+    }
+}
+
+}); 
 
 //console.log('Datos del readme:');
 
