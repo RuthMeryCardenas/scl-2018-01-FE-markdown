@@ -1,5 +1,5 @@
 {
-  "name": "scl-2018-01-fe-markdown",
+  "name": "md-links",
   "version": "1.0.0",
   "description": "libreria para identificar links en un archivo md",
   "main": "index.js",
@@ -17,6 +17,9 @@
   ],
   "author": "karyn herrera",
   "license": "ISC",
+  "bin": {
+    "md-links": "index.js"
+  },
   "bugs": {
     "url": "https://github.com/karynherrera/scl-2018-01-FE-markdown/issues"
   },
