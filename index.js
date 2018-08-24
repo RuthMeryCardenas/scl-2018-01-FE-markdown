@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
-//module.exports.mdLinks = ((file)=>{
+module.exports.mdLinks = ((file)=>{
 
-//});
+});
+
+module.exports.markdownLinkExtractor=()=>{
+  
+}
 
 const fs=require('fs');
 const path = require('path');
