@@ -1,74 +1,41 @@
 #!/usr/bin/env node
 
-module.exports.mdLinks = ((file)=>{
+module.exports.mdLinks = ((file) => {
 
 });
-
-module.exports.markdownLinkExtractor=()=>{
-  
-}
-
-const fs=require('fs');
+const fs = require('fs');
 const path = require('path');
-let argumento=[];
-fs.readFile('./readme.md', (error,datos) => {
-  if (error)
-    console.log(error);
-  else
-  /*process.argv.forEach(function (val, index, array) {
-    //argumento=val;
-    console.log(val);
+const Marked = require('marked');
+const mdLinks = require('./lib/md-links');
 
-  });*/
-  //console.log(process.argv[1]);
-  argumento=process.argv[1];
-  //console.log(process.argv[1]);
-    //console.log(datos.toString());
-});
+// vemos la ruta actual del archivo
+console.log(`Directorio actual: ${__dirname}`);
+const directory = __dirname;
 
-const readme = process.argv[1];
-//console.log(readme);
+// transforma el contenido del archivo a string
+let dirRe = Buffer.from(directory);
 
-var filename = path.dirname(process.argv[1]);
-console.log(filename);
 
-//const [, , ...args] = process.argv;
-
-fs.readdir(filename, (err, files)=> {
+fs.readdir(dirRe, (err, files) => {
   if (err) {
-    console.log('Error reading files: ', err);
-
+    console.log("###" + err.message);
+  } else {
+    console.log(files);
+    files.forEach((i) => {
+      if (path.extname(i) === '.md') {
+        console.log("archivo encontrado: "+i);
+        fs.readFile(i, 'utf8', (err, data)=> {
+          if (err) {
+            console.log(err.message);
+          } else {
+            //console.log(data);
+            let zeldas = mdLinks.markdownLinkExtractor(data);
+            console.log(zeldas);
+          }
+        })
+      }
+    });
   }
+
   
-  
- /* files.forEach ((i)=> {
-    // read its contents.
-    if (path.extname(files[i] === '.md')) {
-      console.log(files[i]);
-      fs.readFile(files[i], function(error, data) {
-        if (error) {
-          console.log('error', error);
-        }
-        console.log(data);
-      });
-    }
-  }); */
-
-  for (let i = 0; i < files.length; i++) {
-    if (path.extname(files[i]) === '.md') {
-      console.log(files[i]);
-      fs.readFile(files[i], 'utf8', function(err, data) {
-        if (err) {
-          console.log(err);
-        } else {
-          //console.log(data);
-        }
-      });
-    }
-}
-
-}); 
-
-//console.log('Datos del readme:');
-
-//console.log("process.argv: "+process.argv);
+});
