@@ -23,7 +23,7 @@ let dirRe = Buffer.from(root);
 
 // leemos la ruta del directorio
 fs.readdir(dirRe, (err, files) => {
-  let indicador = 0;
+  let md = 0, others = 0;
   let numLine = 0;
   let links;
   let dtsToJson;
@@ -34,9 +34,11 @@ fs.readdir(dirRe, (err, files) => {
     files.forEach((i) => {
       // console.log(i.indexOf(i));
       if (path.extname(i) === '.md') {
+        md++;
         console.log('Archivo encontrado: ' + i);
         console.log('Links Encontrados en el Archivo: ' + i);
         // contamos las lineas del documento
+        
         let currentReader = readline.createInterface({
           input: fs.createReadStream(i)
         });
@@ -53,13 +55,13 @@ fs.readdir(dirRe, (err, files) => {
             numLine++;
           }
         });
-        indicador = 0;
-      } else if (path.extname(i) !== '.md') {
-        indicador = indicador + 1;
+        
+      } else {
+        others++;
       }
       // console.log(links);
     });
-    if (indicador !== 0) {
+    if (md === 0) {
       console.log('No hay archivos tipo .md en la carpeta indicada');
     } else {
       // console.log(links);
