@@ -10,6 +10,13 @@ const mdLinks = require('./lib/md-links');
 const fetch = require('node-fetch');
 
 // Extraemos la ruta que el usuario ingresó y devolvemos el nombre del directorio de la ruta
+if (path.isAbsolute(process.argv[2])) {
+  console.log(' absoluta ');
+} else {
+  console.log('no absoluta');
+  ruti = path.resolve(process.argv[2]);
+  console.log(ruti);
+}
 let ruta = path.dirname(process.argv[2]);
 // console.log("Ruta: "+ruta);
 // console.log(process.argv[2]);
@@ -20,7 +27,7 @@ const directory = __dirname;
 
 // transforma el contenido del archivo a string
 let dirRe = Buffer.from(root);
-
+// let rutaRel = path.resolve(rutaAbs);
 // leemos la ruta del directorio
 fs.readdir(dirRe, (err, files) => {
   let md = 0, others = 0;
@@ -28,7 +35,7 @@ fs.readdir(dirRe, (err, files) => {
   let links;
   
   if (err) {
-    console.log('###' + err.message);
+    console.log('No se encuentra el archivo en el directorio');
   } else {
     // console.log(files);
     files.forEach((i) => {
@@ -54,7 +61,7 @@ fs.readdir(dirRe, (err, files) => {
               if (element !== []) {
                 fetch(element.href)
                   .then(response => {
-                    let statusLine= response.status;
+                    let statusLine = response.status;
                     // console.log('holi' + response.status);
                     console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' ' + element.text);
                   }).catch((error) => {
