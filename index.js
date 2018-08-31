@@ -7,7 +7,7 @@ const fs = require('fs');
 readline = require('readline');
 const path = require('path');
 const mdLinks = require('./lib/md-links');
-
+const fetch = require('node-fetch');
 
 // Extraemos la ruta que el usuario ingresó y devolvemos el nombre del directorio de la ruta
 let ruta = path.dirname(process.argv[2]);
@@ -26,7 +26,7 @@ fs.readdir(dirRe, (err, files) => {
   let md = 0, others = 0;
   let numLine = 0;
   let links;
-  let dtsToJson;
+  
   if (err) {
     console.log('###' + err.message);
   } else {
@@ -38,20 +38,28 @@ fs.readdir(dirRe, (err, files) => {
         md++;
         console.log('Archivo encontrado: ' + i);
         console.log('Links Encontrados en el Archivo: ' + i);
-        // contamos las lineas del documento
-        ruta = root;
-        ruta= path.relative(directory, root);
-        //ruta = path.relative(root);
+        rutaAbs = root + '/' + i;
+        // verificamos la ruta relativa del archivo
+        ruta = path.relative(directory, rutaAbs);
+        // ruta = path.resolve(rutaAbs);
         let currentReader = readline.createInterface({
           input: fs.createReadStream(i)
         });
         currentReader.on('line', (line) => {
           if (line !== '') {
+            // contamos las lineas del documento
             numLine++;
             links = mdLinks.mdLinkExtractor(ruta, line, numLine);
             links.forEach(element=>{
               if (element !== []) {
-                console.log(element);
+                fetch(element.href)
+                  .then(response => {
+                    let statusLine= response.status;
+                    // console.log('holi' + response.status);
+                    console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' ' + element.text);
+                  }).catch((error) => {
+                    console.log(error);
+                  });
               }
             });
           } else {
