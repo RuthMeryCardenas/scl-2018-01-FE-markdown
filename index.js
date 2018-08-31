@@ -9,7 +9,7 @@ const path = require('path');
 const mdLinks = require('./lib/md-links');
 
 
-// Extraemos la ruta que el usuario ingresó
+// Extraemos la ruta que el usuario ingresó y devolvemos el nombre del directorio de la ruta
 let ruta = path.dirname(process.argv[2]);
 // console.log("Ruta: "+ruta);
 // console.log(process.argv[2]);
@@ -33,19 +33,22 @@ fs.readdir(dirRe, (err, files) => {
     // console.log(files);
     files.forEach((i) => {
       // console.log(i.indexOf(i));
+      // verificamos la extensión del archivo 
       if (path.extname(i) === '.md') {
         md++;
         console.log('Archivo encontrado: ' + i);
         console.log('Links Encontrados en el Archivo: ' + i);
         // contamos las lineas del documento
-        
+        ruta = root;
+        ruta= path.relative(directory, root);
+        //ruta = path.relative(root);
         let currentReader = readline.createInterface({
           input: fs.createReadStream(i)
         });
         currentReader.on('line', (line) => {
           if (line !== '') {
             numLine++;
-            links = mdLinks.mdLinkExtractor(i, line, numLine);
+            links = mdLinks.mdLinkExtractor(ruta, line, numLine);
             links.forEach(element=>{
               if (element !== []) {
                 console.log(element);
@@ -54,8 +57,7 @@ fs.readdir(dirRe, (err, files) => {
           } else {
             numLine++;
           }
-        });
-        
+        }); 
       } else {
         others++;
       }
@@ -63,8 +65,8 @@ fs.readdir(dirRe, (err, files) => {
     });
     if (md === 0) {
       console.log('No hay archivos tipo .md en la carpeta indicada');
-    } else {
-      // console.log(links);
+    } if (others === 0) {
+      console.log('No hay archivos en la carpeta indicada');
     }
   }
 });
