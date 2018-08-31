@@ -25,7 +25,7 @@ let dirRe = Buffer.from(root);
 fs.readdir(dirRe, (err, files) => {
   let indicador = 0;
   let numLine = 0;
-  let links = [];
+  let links;
   let dtsToJson;
   if (err) {
     console.log('###' + err.message);
@@ -42,37 +42,28 @@ fs.readdir(dirRe, (err, files) => {
         });
         currentReader.on('line', (line) => {
           if (line !== '') {
-            let zelda = mdLinks.mdLinkExtractor(i, line);
-            let result;
-            if (zelda.length > 0) {
-              let found = links.find(item => {
-                console.log(item);
-                console.log(zelda);
-                item.href === zelda;
-                return result = true;
-              });
-              if (result) {
-                
+            numLine++;
+            links = mdLinks.mdLinkExtractor(i, line, numLine);
+            links.forEach(element=>{
+              if (element !== []) {
+                console.log(element);
               }
-              else {
-                links.push(zelda);
-              }
-            } 
-            //console.log('link ' + JSON.stringify(links));
+            });
+          } else {
+            numLine++;
           }
-          
         });
-       
-       
-        indicador === 0;
+        indicador = 0;
       } else if (path.extname(i) !== '.md') {
         indicador = indicador + 1;
       }
+      // console.log(links);
     });
-    console.log(links);
-  }
-  if (indicador !== 0) {
-    console.log('No hay archivos tipo .md en la carpeta indicada');
+    if (indicador !== 0) {
+      console.log('No hay archivos tipo .md en la carpeta indicada');
+    } else {
+      // console.log(links);
+    }
   }
 });
 
