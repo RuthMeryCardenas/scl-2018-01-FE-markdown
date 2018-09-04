@@ -60,9 +60,9 @@ if (path.isAbsolute(process.argv[2])) {
                         .then(response => {
                           let statusLine = response.status;
                           // console.log('holi' + response.status);
-                          console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' Ok ' + element.text);
+                          console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' Ok -> ' + element.text);
                         }).catch((error) => {  
-                          console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404 Fail' + ' ' + element.text);
+                          console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404 Fail' + ' -> ' + element.text);
                         });
                     }
                   });
@@ -72,7 +72,7 @@ if (path.isAbsolute(process.argv[2])) {
               }
               links.forEach(element=>{
                 if (element !== []) {
-                  console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' ' + element.text);
+                  console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' -> ' + element.text);
                 }
               });
             } else {
@@ -133,9 +133,9 @@ if (path.isAbsolute(process.argv[2])) {
                   .then(response => {
                     let statusLine = response.status;
                     // console.log('holi' + response.status);
-                    console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' Ok ' + element.text);
+                    console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' Ok -> ' + element.text);
                   }).catch((error) => {
-                    console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404 Fail' + ' ' + element.text);
+                    console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404 Fail' + ' -> ' + element.text);
                   });
               }
             });
@@ -145,7 +145,7 @@ if (path.isAbsolute(process.argv[2])) {
         }
         links.forEach(element=>{
           if (element !== []) {
-            console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' ' + element.text);
+            console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' -> ' + element.text);
           }
         });
       } else {
