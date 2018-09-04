@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 const fs = require('fs');
 readline = require('readline');
 const path = require('path');
@@ -8,7 +7,7 @@ const mdLinks = require('./lib/md-links');
 const fetch = require('node-fetch');
 
 // Extraemos la ruta que el usuario ingresó y devolvemos el nombre del directorio de la ruta
-
+let validate = process.argv[3];
 if (path.isAbsolute(process.argv[2])) {
   console.log(' absoluta ');
   let ruta = path.dirname(process.argv[2]);
@@ -52,16 +51,28 @@ if (path.isAbsolute(process.argv[2])) {
             // contamos las lineas del documento
               numLine++;
               links = mdLinks.mdLinkExtractor(ruta, line, numLine);
+              if (validate !== undefined) {
+                if (validate === '--validate') {
+                  // console.log('validando' + validate);
+                  links.forEach(element=>{
+                    if (element !== []) {
+                      fetch(element.href)
+                        .then(response => {
+                          let statusLine = response.status;
+                          // console.log('holi' + response.status);
+                          console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' Ok ' + element.text);
+                        }).catch((error) => {  
+                          console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404 Fail' + ' ' + element.text);
+                        });
+                    }
+                  });
+                } else {
+                  console.log('Comando no valido');
+                }
+              }
               links.forEach(element=>{
                 if (element !== []) {
-                  fetch(element.href)
-                    .then(response => {
-                      let statusLine = response.status;
-                      // console.log('holi' + response.status);
-                      console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' ' + element.text);
-                    }).catch((error) => {  
-                      console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404' + ' ' + element.text);
-                    });
+                  console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' ' + element.text);
                 }
               });
             } else {
@@ -110,21 +121,31 @@ if (path.isAbsolute(process.argv[2])) {
       input: fs.createReadStream(i)
     });
     currentReader.on('line', (line) => {
-      
       if (line !== '') {
         // contamos las lineas del documento
         numLine++;
         links = mdLinks.mdLinkExtractor(direc, line, numLine);
+        if (validate !== undefined) {
+          if (validate === '--validate') {
+            links.forEach(element=>{
+              if (element !== []) {
+                fetch(element.href)
+                  .then(response => {
+                    let statusLine = response.status;
+                    // console.log('holi' + response.status);
+                    console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' Ok ' + element.text);
+                  }).catch((error) => {
+                    console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404 Fail' + ' ' + element.text);
+                  });
+              }
+            });
+          } else {
+            console.log('Comando no valido');
+          }
+        }
         links.forEach(element=>{
           if (element !== []) {
-            fetch(element.href)
-              .then(response => {
-                let statusLine = response.status;
-                // console.log('holi' + response.status);
-                console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' ' + element.text);
-              }).catch((error) => {
-                console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404' + ' ' + element.text);
-              });
+            console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' ' + element.text);
           }
         });
       } else {

@@ -1,5 +1,5 @@
 {
-  "name": "md-links",
+  "name": "md-links-kh",
   "version": "1.0.0",
   "description": "libreria para identificar links en un archivo md",
   "main": "index.js",
