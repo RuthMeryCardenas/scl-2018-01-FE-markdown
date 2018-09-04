@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
-module.exports.mdLinks = ((file) => {
 
-});
 const fs = require('fs');
 readline = require('readline');
 const path = require('path');
@@ -10,14 +8,16 @@ const mdLinks = require('./lib/md-links');
 const fetch = require('node-fetch');
 
 // Extraemos la ruta que el usuario ingresó y devolvemos el nombre del directorio de la ruta
+/*
 if (path.isAbsolute(process.argv[2])) {
   console.log(' absoluta ');
 } else {
   console.log('no absoluta');
   ruti = path.resolve(process.argv[2]);
   console.log(ruti);
-}
+} */
 let ruta = path.dirname(process.argv[2]);
+//let ruta = path.dirname(process.argv[2]);
 // console.log("Ruta: "+ruta);
 // console.log(process.argv[2]);
 let root = process.argv[2];
@@ -64,8 +64,9 @@ fs.readdir(dirRe, (err, files) => {
                     let statusLine = response.status;
                     // console.log('holi' + response.status);
                     console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + statusLine + ' ' + element.text);
-                  }).catch((error) => {
-                    console.log(error);
+                  }).catch((error) => {  
+                    console.log(element.file + ' Linea:' + element.line + ' ' + element.href + ' Status:' + '404' + ' ' + element.text);
+                    
                   });
               }
             });
@@ -85,4 +86,3 @@ fs.readdir(dirRe, (err, files) => {
     }
   }
 });
-
