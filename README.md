@@ -29,23 +29,40 @@ $ npm install mDownLinks --save
 
 ## Modo de Uso  :large_blue_circle:
 
-_Una vez intalado en la terminal o añadido como modulo al proyecto hay diversas maneras de utilizar la libreria, ya sea ingresando la ruta absoluta del archivo a evaluar:_
+_Una vez intalado en la terminal o añadido como modulo al proyecto hay diversas maneras de utilizar la libreria:_
+ 
+:one: Puede utilizarse ingresando una ruta absoluta donde se encuentre el archivo a evaluar:
 
 ```
 $ md-links C:/Users/Admin/Documents/PROYECTO/TALLERES
 ```
 En este caso la libreria verifica si hay un archivo de tipo .md en la dirección especificada, si lo hay mostrará un listado de los links que se encuentren en el:
 
+
+:two: Puede utilizarse tambien ingresando la ruta relativa y nombre del archivo a evaluar:
+
+```
+$ md-links ./readme2.md
+```
+En ambos casos la libreria responderá mostrando un listado con los links encontrados:
+
 ![Listado de Links](/img/RESPUESTA1.png)
 
-El listado muestra la ruta relativa del archivo, el nombre de este, la linea enla que se encontró el link, el link y el texto de este.
+En el listado se muestran los siguientes datos de interés: la ruta relativa del archivo, el nombre del archivo que se esta evaluando, la linea en la que se encontró el link, la direccion URL del link y el texto de este.
 
-_Si queremos validar si los links estan rotos o no, ejecutamos denuevo peor agregando la opcion ```--validate```_
+_Ahora si queremos validar si los links encontrados estan rotos o no, ejecutamos denuevo agregando la opcion ```--validate```_
 ```
 $ md-links C:/Users/Admin/Documents/PROYECTO/TALLERES --validate
 ```
+Ó
+```
+$ md-links ./readme2.md --validate
+```
+
 Nos mostrará lo siguiente:
 ![Listado de Links](/img/RESPUESTA2.png)
+
+Donde se agrega al listado el status de los links: Ok si los links son validos y Fail si estan rotos.
 
 ## Construido con 🛠️
 
