@@ -1,6 +1,6 @@
 # Libreria mDownLinks (Markdown Links)
 
-Libreria desarrollada para extraer los links de un archivo de tipo markdown, el usuario puede ingresar ya sea la ruta absoluta o relativa del archivo que desea evaluar, tambien puede verificar si los links econtrados estan rotos o no
+Libreria desarrollada para extraer los links de un archivo de tipo markdown, el usuario puede ingresar ya sea la ruta absoluta o relativa del archivo que desea evaluar, tambien puede verificar si los links econtrados estan rotos o no.
 
 ## Comenzando 🚀
 
@@ -8,7 +8,7 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 
 
-### Pre-requisitos  :white_check_mark:
+### Pre-requisitos  :green_check_mark:
 
 _Que cosas necesitas para instalar el software y como instalarlas_
 
@@ -25,7 +25,9 @@ _Se instala directamente desde la terminal con npm_
 ```
 $ npm install mDownLinks --save
 ```
+## Modo de Uso
 
+_Una vez intalado en la terminal o añadido como modulo al proyecto_
 
 ## Construido con 🛠️
 
