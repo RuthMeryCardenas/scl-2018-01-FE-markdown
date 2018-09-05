@@ -8,7 +8,8 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 
 
-### Pre-requisitos  :green_check_mark:
+### Pre-requisitos  :squared_green_check_mark:    
+
 
 _Que cosas necesitas para instalar el software y como instalarlas_
 
