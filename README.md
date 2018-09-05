@@ -27,30 +27,30 @@ _Se instala directamente desde la terminal con npm_
 $ npm install mDownLinks --save
 ```
 
-## Modo de Uso  :large_blue_circle:
+## :large_blue_circle: Modo de Uso  
 
-_Una vez intalado en la terminal o añadido como modulo al proyecto hay diversas maneras de utilizar la libreria:_
+_Una vez intalado en la terminal o añadido como modulo al proyecto hay 2 maneras de utilizar la libreria:_
  
 :one: Puede utilizarse ingresando una ruta absoluta donde se encuentre el archivo a evaluar:
 
 ```
 $ md-links C:/Users/Admin/Documents/PROYECTO/TALLERES
 ```
-En este caso la libreria verifica si hay un archivo de tipo .md en la dirección especificada, si lo hay mostrará un listado de los links que se encuentren en el:
+En este caso la libreria verifica si hay un archivo de tipo .md en la dirección especificada, si lo hay mostrará un listado de los links que se encuentren en el.
 
 
-:two: Puede utilizarse tambien ingresando la ruta relativa y nombre del archivo a evaluar:
+:two: Tambien puede utilizarse ingresando la ruta relativa y nombre del archivo a evaluar:
 
 ```
 $ md-links ./readme2.md
 ```
 En ambos casos la libreria responderá mostrando un listado con los links encontrados:
 
-![Listado de Links](/img/RESPUESTA1.png)
+![Listado de Links](/img/RESPUESTA3.png)
 
 En el listado se muestran los siguientes datos de interés: la ruta relativa del archivo, el nombre del archivo que se esta evaluando, la linea en la que se encontró el link, la direccion URL del link y el texto de este.
 
-_Ahora si queremos validar si los links encontrados estan rotos o no, ejecutamos denuevo agregando la opcion ```--validate```_
+Ahora si queremos validar si los links encontrados estan rotos o no, ejecutamos denuevo agregando la opcion ```--validate```
 ```
 $ md-links C:/Users/Admin/Documents/PROYECTO/TALLERES --validate
 ```
@@ -60,7 +60,7 @@ $ md-links ./readme2.md --validate
 ```
 
 Nos mostrará lo siguiente:
-![Listado de Links](/img/RESPUESTA2.png)
+![Listado de Links Evaluados](/img/RESPUESTA2.png)
 
 Donde se agrega al listado el status de los links: Ok si los links son validos y Fail si estan rotos.
 
