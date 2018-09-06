@@ -10,7 +10,7 @@ En primera instancia es necesario tener instalado Node.js y npm, para verificarl
 ```
 nodejs-v
 ```
- si no esta instalado, puedes instalarlo según tu sistema operativo desde acá:[Node.js](https://nodejs.org/en/download/).
+ si no esta instalado, puedes instalarlo según tu sistema operativo desde acá: [Node.js] (https://nodejs.org/en/download/).
 Una vez instalado node, instalamos npm:
 ```
 install npm 
@@ -29,7 +29,7 @@ $npm install node-fetch --save
 
 ## :floppy_disk: Instalación  
 
-_Se instala directamente desde la terminal con npm_
+_La libreria se instala directamente desde la terminal con npm_
 
 ```
 $ npm install mDownLinks --save
@@ -37,7 +37,7 @@ $ npm install mDownLinks --save
 
 ## :ballot_box_with_check: Modo de Uso  
 
-_Una vez intalado en la terminal o añadido como modulo al proyecto hay 2 maneras de utilizar la libreria:_
+_Una vez instalado en la terminal o añadido como modulo al proyecto hay 2 maneras de utilizar la libreria:_
  
 :one: Puede utilizarse ingresando una ruta absoluta donde se encuentre el archivo a evaluar:
 
@@ -71,7 +71,9 @@ Nos mostrará lo siguiente:
 ![Listado de Links Evaluados](/img/RESPUESTA2.png)
 
 Donde se agrega al listado el status de los links: 
+
  :ok_woman: Ok si los links son validos.
+ 
   :no_good: Fail si estan rotos.
 
 ## :speech_balloon: Referencias
@@ -80,18 +82,17 @@ _Información utilizada para crear la libreria_
 
 * [Node.js](https://nodejs-es.github.io/api/) - Documentacion node (español).
 * [FileSystem](https://desarrolloweb.com/articulos/lectura-archivos-nodejs.html) - Modulo File System Node (español).
-* [Modulos](https://medium.com/@peraferrer/como-crear-un-m%C3%B3dulo-npm-6baef161a96) - Como crear Librerias.
-* [Node.js](https://nodejs-es.github.io/api/) - Documentacion node (español).
-* [NPM](https://ed.team/blog/como-publicar-en-npm) - Publicación de Modulos con NPM.
-* [Markdown](https://github.com/ricval/Documentacion/blob/master/Markdown/GitHub_Flavores_Markdown.md)
+* [Modulos npm](https://medium.com/@peraferrer/como-crear-un-m%C3%B3dulo-npm-6baef161a96) - Como crear Librerias.
+* [npm](https://ed.team/blog/como-publicar-en-npm) - Publicación de Modulos con NPM.
+* [Markdown](https://github.com/ricval/Documentacion/blob/master/Guias/GitHub/mastering-markdown.md) - Estructura de los archivos Markdown. 
 
 _Link directo a la libreria en npm_
-[Libreria mdownLinks npm](https://www.npmjs.com/settings/karynherrera/packages) 
-
+[Libreria mDownLinks npm](https://www.npmjs.com/settings/karynherrera/packages)
 
 ## 📄 Modelo Kanban 
 
-Para la realización del proyecto se siguió el modelo Kanban, dividiendo la historia de usuario en tareas y así optimizando mejor los tiempos.
-[Trello](https://trello.com/b/wMGp0JUl/markdown) - Organización del Proyecto.
+Para la realización del proyecto se siguió el modelo Kanban, dividiendo la historia de usuario en tareas y así optimizando mejor los tiempos y sprints.
+Puede verificar la organización acá:
+[Modelo Kanban mDownLinks](https://trello.com/b/wMGp0JUl/markdown) - Organización del Proyecto.
 
 
