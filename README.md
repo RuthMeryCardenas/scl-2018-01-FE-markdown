@@ -2,6 +2,12 @@
 
 Libreria desarrollada para extraer los links de un archivo de tipo markdown, el usuario puede ingresar ya sea la ruta absoluta o relativa del archivo que desea evaluar, tambien puede verificar si los links econtrados estan rotos o no.
 
+![Libreria](https://user-images.githubusercontent.com/29713378/47378337-32e0cb00-d6ce-11e8-8e8e-29696e5de762.png)
+
+## Desarrollado para 
+[Laboratoria](https://github.com/Laboratoria)
+
+
 ## :checkered_flag: Antes de Empezar  
 
 _Antes de utilizar esta libreria es necesario instalar las dependencias que utiliza para su correcto desempeño._
